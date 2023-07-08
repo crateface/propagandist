@@ -2518,7 +2518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 44.102, y: 13.815}
+  m_AnchoredPosition: {x: 44.101944, y: 13.814999}
   m_SizeDelta: {x: 248.2031, y: 47.6294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &564464371
@@ -2704,6 +2704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249ba57f3916bd94992e6ea4e450c89d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  userID: 
 --- !u!1 &679678630
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,7 +3047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &745008352
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7092,6 +7093,7 @@ MonoBehaviour:
   strikesText: {fileID: 1021065240}
   eventText: {fileID: 1990818278}
   eventCounterText: {fileID: 544896728}
+  contactSelection: {fileID: 1812911155}
 --- !u!114 &1509733699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10251,7 +10253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2075956554
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10469,7 +10471,7 @@ GameObject:
   - component: {fileID: 3568595386318880654}
   - component: {fileID: 7956833540696711300}
   m_Layer: 5
-  m_Name: Image
+  m_Name: contact 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10600,7 +10602,7 @@ GameObject:
   - component: {fileID: 1101094074255620608}
   - component: {fileID: 5813500949943903498}
   m_Layer: 5
-  m_Name: Contact card (1)
+  m_Name: contact 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10619,7 +10621,7 @@ GameObject:
   - component: {fileID: 1101094075416340697}
   - component: {fileID: 5813500950970382291}
   m_Layer: 5
-  m_Name: Contact card (2)
+  m_Name: contact 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10638,7 +10640,7 @@ GameObject:
   - component: {fileID: 1101094075790963248}
   - component: {fileID: 5813500951394839866}
   m_Layer: 5
-  m_Name: Contact card
+  m_Name: contact 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

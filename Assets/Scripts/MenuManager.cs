@@ -26,6 +26,7 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI strikesText;
     public TextMeshProUGUI eventText;
     public TextMeshProUGUI eventCounterText;
+    public TMP_Dropdown contactSelection;
     
     // Start is called before the first frame update
 
@@ -36,6 +37,8 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         openMain();
+        contactSelection.ClearOptions();
+        addToContactDropdown("no source");
     }
 
     // Update is called once per frame
@@ -110,8 +113,9 @@ public class MenuManager : MonoBehaviour
         eventCounterText.text = "Events until next phase: " + eventsRemaining;
     }
 
-    public void updateContacts(GameObject[] contacts)
+    public void addToContactDropdown(string contactName)
     {
-
+        TMP_Dropdown.OptionData newOption = new TMP_Dropdown.OptionData(contactName) ;
+        contactSelection.options.Add(newOption);
     }
 }
