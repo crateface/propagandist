@@ -11,6 +11,9 @@ public class ResourceManager : MonoBehaviour
     public static ResourceManager main;
     int articlesPublished;
     int youMessedUp;
+    float currentReporters;
+    float currentFactCheckers;
+    float currentAdverts;
 
     public void Awake()
     {
@@ -59,16 +62,30 @@ public class ResourceManager : MonoBehaviour
 
     public void publish(string text, float reporters, float factCheckers, float adverts)
     {
-        int [] newValues = API(text);
-        int reporter = (int)reporters*100;
-        int factChecker = (int)factCheckers * 100;
-        int advert = (int)adverts * 100;
-        updateRevenue(newValues[0] - reporter/6 - factChecker/6 + advert/3);
-        updateOutreach(newValues[1] + reporter/9);
-        updateStateSupport(newValues[2]);
-        updateCredibility(newValues[3] + factChecker/4 - advert/6);
+        serverScript.main.sendTitle(text);
+        currentAdverts = adverts;
+        currentFactCheckers = factCheckers;
+        currentReporters = reporters;
+        
+    }
+
+    public void calculateValues(string FakeorReal)
+    {
+        int credVal = 0;
+        int reporter = (int)currentReporters*100;
+        int factChecker = (int)currentFactCheckers * 100;
+        int advert = (int)currentAdverts * 100;
+        updateRevenue(Random.Range(-10, 10) - reporter/6 - factChecker/6 + advert/3);
+        updateOutreach(Random.Range(-10, 10) + reporter/9);
+        updateStateSupport(Random.Range(-10, 10));
+        Debug.Log(FakeorReal);
+        Debug.Log("hello");
+        if (FakeorReal == "Fake")
+        { credVal = -10;}
+        else { credVal = 10; }
+        updateCredibility(credVal + factChecker/4 - advert/6);
         articlesPublished += 1;
-        //if (revenue + outreach + stateSupport == 0 & youMessedUp == 0) { firebaseManager.main.updateAchievement("sudden collapse"); }
+        //if (revenue + outreach + stateSupport == 0 & youMessedUp == 0) { firebaseManager.main.updateAchievement("sudden collapse");
         if (revenue == 0) { youMessedUp += 1; }
         if (outreach == 0) { youMessedUp += 1; }
         if (stateSupport == 0) { youMessedUp += 1; }
@@ -76,14 +93,7 @@ public class ResourceManager : MonoBehaviour
         if (youMessedUp >= 3) { gameOver(); }
         MenuManager.main.updateStrikes(youMessedUp);
         EventManager.main.refreshEvent();
-        //firebaseManager.main.updateValues(revenue, outreach, stateSupport, credibility);
         ContactManager.main.generateContact();
-    }
-
-    public int[] API(string text)
-    {
-        int [] namehere = {Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10)};
-        return namehere;
     }
 
     public void gameOver()

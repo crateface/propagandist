@@ -27,6 +27,7 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI eventText;
     public TextMeshProUGUI eventCounterText;
     public TMP_Dropdown contactSelection;
+
     
     // Start is called before the first frame update
 
@@ -95,6 +96,7 @@ public class MenuManager : MonoBehaviour
         { return; }
         ResourceManager.main.publish(articleTitle.text,reporters.value,factCheckers.value,adverts.value);
         articleTitle.text = "";
+
     }
 
     public void updateStrikes(int strikes)

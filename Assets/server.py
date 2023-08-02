@@ -1,4 +1,7 @@
 from flask import Flask, jsonify, request
+from credibility import predictFakeReal
+
+
 
 output = ""
 
@@ -9,7 +12,7 @@ def getData():
 	global output
 	if request.method == 'POST':
 		data = request.form ["text"]
-		output = sometign(data)
+		output = getTrueFalse(data)
 		return jsonify(data)
 	else:
 		data = output
@@ -18,6 +21,9 @@ def getData():
 
 def sometign(streeng):
 	return streeng + "extra"
+
+def getTrueFalse(title):
+	return predictFakeReal(title)
 
 if __name__ == '__main__':
 	app.run()
