@@ -62,11 +62,12 @@ public class ResourceManager : MonoBehaviour
 
     public void publish(string text, float reporters, float factCheckers, float adverts)
     {
-        serverScript.main.sendTitle(text);
+        if (text.Split(' ').Length < 5)
+        { calculateValues("Fake"); }
+        else { serverScript.main.sendTitle(text); }
         currentAdverts = adverts;
         currentFactCheckers = factCheckers;
         currentReporters = reporters;
-        
     }
 
     public void calculateValues(string FakeorReal)
@@ -90,14 +91,14 @@ public class ResourceManager : MonoBehaviour
         if (outreach == 0) { youMessedUp += 1; }
         if (stateSupport == 0) { youMessedUp += 1; }
         if (revenue * outreach * stateSupport != 0) { youMessedUp = 0; }
-        if (youMessedUp >= 3) { gameOver(); }
+        if (youMessedUp >= 3) { gameOver("Ran out of resources"); }
         MenuManager.main.updateStrikes(youMessedUp);
         EventManager.main.refreshEvent();
         ContactManager.main.generateContact();
     }
 
-    public void gameOver()
+    public void gameOver(string whyGameEnd)
     {
-        MenuManager.main.gameOver();
+        MenuManager.main.gameOver(whyGameEnd);
     }
 }

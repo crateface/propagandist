@@ -1,21 +1,25 @@
 from flask import Flask, jsonify, request
 from credibility import predictFakeReal
+from statesupport import getStateSupport
 
 
 
-output = ""
+TrueFalse = ""
+support = 0
 
 app = Flask(__name__)
 @app.route("/", methods = ['POST', 'GET'])
 
 def getData():
-	global output
+	global TrueFalse
 	if request.method == 'POST':
 		data = request.form ["text"]
-		output = getTrueFalse(data)
+		TrueFalse = getTrueFalse(data)
+		support = getSupport(data)
 		return jsonify(data)
 	else:
-		data = output
+		data = [{"TrueFalse":TrueFalse,"support":support}]
+		print(data)
 		return jsonify(data)
 
 
@@ -24,6 +28,9 @@ def sometign(streeng):
 
 def getTrueFalse(title):
 	return predictFakeReal(title)
+
+def getSupport(title):
+	return getStateSupport(title)
 
 if __name__ == '__main__':
 	app.run()

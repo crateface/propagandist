@@ -27,6 +27,7 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI eventText;
     public TextMeshProUGUI eventCounterText;
     public TMP_Dropdown contactSelection;
+    public TextMeshProUGUI gameOverReason;
 
     
     // Start is called before the first frame update
@@ -70,12 +71,13 @@ public class MenuManager : MonoBehaviour
         contactMenu.SetActive(true);
     }
 
-    public void gameOver()
+    public void gameOver(string whyGameEnd)
     {
         mainMenu.SetActive(false);
         resourceMenu.SetActive(false);
         contactMenu.SetActive(false);
         gameOverScreen.SetActive(true);
+        gameOverReason.text = whyGameEnd;
     }
 
     public void updateBars(float revenue, float outreach, float stateSupport, float credibility)

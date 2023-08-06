@@ -34,5 +34,6 @@ public class contact : MonoBehaviour
     {
         ResourceManager.main.updateCredibility(-10);
         ResourceManager.main.updateRevenue(15);
+        decline();
     }
 }

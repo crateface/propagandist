@@ -41,6 +41,6 @@ public class EventManager : MonoBehaviour
 
     public void proceedNextPhase()
     {
-        
+        MenuManager.main.gameOver("finished the demo");
     }
 }

@@ -15,9 +15,8 @@ public class serverScript : MonoBehaviour
     {
         main = this;
     }
-    void Start()
-    {
-        string path = Application.dataPath + "/server.py";
+    /*void Start()
+    { string path = Application.dataPath + "/server.py";
         process.StartInfo.FileName = "python";
         process.StartInfo.Arguments = "server.py";
         process.StartInfo.WorkingDirectory = Application.dataPath;
@@ -25,7 +24,7 @@ public class serverScript : MonoBehaviour
         Debug.Log(File.Exists(path));
         print(path);
         process.Start();
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -63,8 +62,9 @@ public class serverScript : MonoBehaviour
             else
             {
                 string result = webrequest.downloadHandler.text;
+                Debug.Log(result);
                 result = result.Replace("\"","");
-                ResourceManager.main.calculateValues(webrequest.downloadHandler.text);
+                ResourceManager.main.calculateValues(result);
             }
         }
     }
