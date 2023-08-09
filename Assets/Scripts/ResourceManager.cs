@@ -63,14 +63,14 @@ public class ResourceManager : MonoBehaviour
     public void publish(string text, float reporters, float factCheckers, float adverts)
     {
         if (text.Split(' ').Length < 5)
-        { calculateValues("Fake"); }
+        { calculateValues("Fake", 0, 0); }
         else { serverScript.main.sendTitle(text); }
         currentAdverts = adverts;
         currentFactCheckers = factCheckers;
         currentReporters = reporters;
     }
 
-    public void calculateValues(string FakeorReal)
+    public void calculateValues(string FakeorReal, float stateSentiment, float angerMeasure)
     {
         int credVal = 0;
         int reporter = (int)currentReporters*100;
@@ -78,9 +78,7 @@ public class ResourceManager : MonoBehaviour
         int advert = (int)currentAdverts * 100;
         updateRevenue(Random.Range(-10, 10) - reporter/6 - factChecker/6 + advert/3);
         updateOutreach(Random.Range(-10, 10) + reporter/9);
-        updateStateSupport(Random.Range(-10, 10));
-        Debug.Log(FakeorReal);
-        Debug.Log("hello");
+        updateStateSupport((int)(stateSentiment * 50));
         if (FakeorReal == "Fake")
         { credVal = -10;}
         else { credVal = 10; }

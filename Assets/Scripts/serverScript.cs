@@ -15,7 +15,7 @@ public class serverScript : MonoBehaviour
     {
         main = this;
     }
-    /*void Start()
+    void Start()
     { string path = Application.dataPath + "/server.py";
         process.StartInfo.FileName = "python";
         process.StartInfo.Arguments = "server.py";
@@ -24,7 +24,7 @@ public class serverScript : MonoBehaviour
         Debug.Log(File.Exists(path));
         print(path);
         process.Start();
-    }*/
+    }
 
     // Update is called once per frame
     void Update()
@@ -62,10 +62,22 @@ public class serverScript : MonoBehaviour
             else
             {
                 string result = webrequest.downloadHandler.text;
-                Debug.Log(result);
-                result = result.Replace("\"","");
-                ResourceManager.main.calculateValues(result);
+                info downloadedInfo = JsonUtility.FromJson<info>(result);
+                Debug.Log(downloadedInfo.stateSupport);
+                Debug.Log(downloadedInfo.TrueFalse);
+                //result = result.Replace("\"","");
+                Debug.Log(downloadedInfo.polarity);
+                ResourceManager.main.calculateValues(downloadedInfo.TrueFalse, downloadedInfo.stateSupport, downloadedInfo.polarity);
+
             }
         }
     }
+   
+}
+[System.Serializable]
+public class info 
+{
+    public string TrueFalse;
+    public float stateSupport;
+    public float polarity;
 }

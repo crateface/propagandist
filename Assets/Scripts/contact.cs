@@ -36,4 +36,11 @@ public class contact : MonoBehaviour
         ResourceManager.main.updateRevenue(15);
         decline();
     }
+
+    public void suppress()
+    {
+
+    }
+
+    
 }
