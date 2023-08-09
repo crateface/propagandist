@@ -21,11 +21,9 @@ def getData():
 		TrueFalse = getTrueFalse(data)
 		support = getSupport(data)
 		polarity = getPolarityy(data)
-		print("hello 2")
 		return jsonify(data)
 	else:
 		data = {"TrueFalse":TrueFalse,"stateSupport":support,"polarity": polarity}
-		print(data)
 		return jsonify(data)
 
 
@@ -39,7 +37,6 @@ def getSupport(title):
 	return getStateSupport(title)
 
 def getPolarityy(title):
-	print("heli")
 	return getPolarity(title)
 	
 

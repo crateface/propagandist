@@ -21,7 +21,6 @@ public class serverScript : MonoBehaviour
         process.StartInfo.Arguments = "server.py";
         process.StartInfo.WorkingDirectory = Application.dataPath;
         process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Minimized;
-        Debug.Log(File.Exists(path));
         print(path);
         process.Start();
     }
@@ -63,10 +62,6 @@ public class serverScript : MonoBehaviour
             {
                 string result = webrequest.downloadHandler.text;
                 info downloadedInfo = JsonUtility.FromJson<info>(result);
-                Debug.Log(downloadedInfo.stateSupport);
-                Debug.Log(downloadedInfo.TrueFalse);
-                //result = result.Replace("\"","");
-                Debug.Log(downloadedInfo.polarity);
                 ResourceManager.main.calculateValues(downloadedInfo.TrueFalse, downloadedInfo.stateSupport, downloadedInfo.polarity);
 
             }
