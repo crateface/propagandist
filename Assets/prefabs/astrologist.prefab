@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 892315459323596748}
   - component: {fileID: 5790326903054265530}
   m_Layer: 5
-  m_Name: funding
+  m_Name: predict
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5813500950840835737}
         m_TargetAssemblyTypeName: contact, Assembly-CSharp
-        m_MethodName: shadyFunds
+        m_MethodName: predict
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -741,7 +741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Funding
+  m_text: Divine
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1320,8 +1320,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A famed star-reader from the streets has impressed upon you the wisdom
-    of the heavens and offered to act as an intermediary.
+  m_text: 'A famed star-reader from the streets with an eye for flair has impressed
+    upon you the wisdom of the heavens and offered to act as an intermediary.  '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

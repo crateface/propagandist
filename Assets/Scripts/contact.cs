@@ -37,10 +37,27 @@ public class contact : MonoBehaviour
         decline();
     }
 
-    public void suppress()
+    public void promote()
     {
-
+        ResourceManager.main.updateOutreach(15);
     }
 
+    public void insure()
+    {
+        ResourceManager.main.hired("you");
+        ResourceManager.main.updateRevenue(-10);
+    }
+
+    public void hireanalyst(string which)
+    {
+        ResourceManager.main.hired(which);
+        ResourceManager.main.updateRevenue(-15);
+    }
     
+    public void predict()
+    {
+        ResourceManager.main.updateRevenue(-5);
+        ResourceManager.main.updateCredibility(-10);
+        ResourceManager.main.updateOutreach(15);
+    }
 }

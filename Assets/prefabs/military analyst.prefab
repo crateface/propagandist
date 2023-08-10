@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 892315459323596748}
   - component: {fileID: 5790326903054265530}
   m_Layer: 5
-  m_Name: funding
+  m_Name: hire military analyst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,14 +124,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5813500950840835737}
         m_TargetAssemblyTypeName: contact, Assembly-CSharp
-        m_MethodName: shadyFunds
-        m_Mode: 1
+        m_MethodName: hireanalyst
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: military
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &3198078340009413634
@@ -741,7 +741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Funding
+  m_text: Hire
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1183,7 +1183,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Government of Russia
+  m_text: 'Military Analyst
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1318,7 +1320,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: this is russia (temp)
+  m_text: A decorated, retired general with decades of experience who can explain
+    the thought process of a decision and its expected outcomes.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

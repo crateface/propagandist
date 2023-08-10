@@ -14,6 +14,9 @@ public class ResourceManager : MonoBehaviour
     float currentReporters;
     float currentFactCheckers;
     float currentAdverts;
+    bool militaryAnalyst;
+    bool politicalAnalyst;
+    bool insurance;
 
     public void Awake()
     {
@@ -44,6 +47,7 @@ public class ResourceManager : MonoBehaviour
     public void updateOutreach(int change)
     {
         outreach += change;
+        if (insurance) { outreach += 3; }
         outreach = Mathf.Clamp(outreach, 0, 100);
         MenuManager.main.updateBars(revenue, outreach, stateSupport, credibility);
     }
@@ -62,6 +66,7 @@ public class ResourceManager : MonoBehaviour
 
     public void publish(string text, float reporters, float factCheckers, float adverts)
     {
+
         if (text.Split(' ').Length < 5)
         { calculateValues("Fake", 0, 0); }
         else { serverScript.main.sendTitle(text); }
@@ -76,13 +81,21 @@ public class ResourceManager : MonoBehaviour
         int reporter = (int)currentReporters*100;
         int factChecker = (int)currentFactCheckers * 100;
         int advert = (int)currentAdverts * 100;
-        updateRevenue(Random.Range(-10, 10) - reporter/6 - factChecker/6 + advert/3);
-        updateOutreach(Random.Range(-10, 10) + reporter/9);
-        updateStateSupport((int)(stateSentiment * 50));
+        int temp = 0;
         if (FakeorReal == "Fake")
-        { credVal = -10;}
-        else { credVal = 10; }
-        updateCredibility(credVal + factChecker/4 - advert/6);
+        {   
+            credVal = -7;
+            temp = Random.Range(credVal, 0);
+        }
+        else 
+        {
+            credVal = 7;
+            temp = Random.Range(0, credVal);
+        }
+        updateOutreach(reporter/9 + (int)angerMeasure*5 - temp);
+        updateRevenue(outreach/10 - reporter/9 - factChecker/9 + advert/4);
+        updateStateSupport((int)(stateSentiment * 50));
+        updateCredibility(credVal + factChecker/6 - advert/6 + Random.Range(-3,2));
         articlesPublished += 1;
         //if (revenue + outreach + stateSupport == 0 & youMessedUp == 0) { firebaseManager.main.updateAchievement("sudden collapse");
         if (revenue == 0) { youMessedUp += 1; }
@@ -98,5 +111,21 @@ public class ResourceManager : MonoBehaviour
     public void gameOver(string whyGameEnd)
     {
         MenuManager.main.gameOver(whyGameEnd);
+    }
+
+    public void hired(string whoHire)
+    {
+        if (whoHire == "you")
+        {
+            insurance = true;
+        } 
+        else if (whoHire == "political")
+        {
+            politicalAnalyst = true;
+        }
+        else if (whoHire == "military")
+        {
+            militaryAnalyst = true;
+        }
     }
 }
