@@ -5,6 +5,8 @@ import gensim
 from gensim.utils import simple_preprocess
 import nltk
 from nltk.corpus import stopwords
+import os
+import sys
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -23,8 +25,8 @@ def loadModel(fileName):
     model = pickle.load(f)
   return model
 
-model = loadModel('fakeNews.pkl')
-vect = loadModel('vectCount.pkl')
+model = loadModel(os.path.dirname(os.path.abspath(sys.argv[0])) + '\\fakeNews.pkl')
+vect = loadModel(os.path.dirname(os.path.abspath(sys.argv[0])) + '\\vectCount.pkl')
 
 def predictFakeReal(text):
   data = {'text':[text]}

@@ -9,20 +9,13 @@ public class serverScript : MonoBehaviour
 
     public static serverScript main;
     // Start is called before the first frame update
-    System.Diagnostics.Process process = new System.Diagnostics.Process();
 
     private void Awake()
     {
         main = this;
     }
     void Start()
-    { string path = Application.dataPath + "/server.py";
-        process.StartInfo.FileName = "python";
-        process.StartInfo.Arguments = "server.py";
-        process.StartInfo.WorkingDirectory = Application.dataPath;
-        process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Minimized;
-        print(path);
-        process.Start();
+    {
     }
 
     // Update is called once per frame
