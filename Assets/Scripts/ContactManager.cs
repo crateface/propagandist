@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ContactManager : MonoBehaviour
 {
-    GameObject[] contactArray;
+    contact[] contactArray;
     public List<GameObject> contactPrefabs;
     public Transform[] contactPanels;
     public static ContactManager main;
@@ -15,7 +15,7 @@ public class ContactManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        contactArray = new GameObject[4];
+        contactArray = new contact[4];
         generateContact();
     }
 
@@ -43,24 +43,36 @@ public class ContactManager : MonoBehaviour
                 {
                     GameObject instance = Instantiate(selected, contactPanels[i].position, Quaternion.identity, contactPanels[i]);
                     instance.GetComponent<contact>().prefabReference = selected;
-                    contactArray[i] = instance;
+                    contactArray[i] = instance.GetComponent<contact>();
                     break;
                 }
             }
         }
     }
 
-    public void removeContact(GameObject contactRemoval, GameObject originalPrefab)
+    public void removeContact(contact contactRemoval, GameObject originalPrefab)
     {
         for (int i = 0; i < contactArray.Length; i++)
         {
             if (contactArray[i] == contactRemoval)
             {
                 contactPrefabs.Add(originalPrefab);
-                Destroy(contactArray[i]);
+                Destroy(contactArray[i].gameObject);
                 contactArray[i] = null;
                 break;
             }
         }
+    }
+
+    public contact findContact(string name)
+    {
+        foreach (contact c in contactArray)
+        {
+            if(c != null && c.name == name)
+            {
+                return c;
+            }
+        }
+        return null;
     }
 }

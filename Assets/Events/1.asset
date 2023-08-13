@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7140f61365eca4797f867998475bff, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  eventContent: US govt warns of impending russian invasion of ukraine
+  eventContent: US government warns of impending Russian invasion of Ukraine in next
+    few weeks
+  affilation: international
+  eventType: political

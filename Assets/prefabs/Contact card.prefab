@@ -93,6 +93,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878202a8426ecbe458d68692342d13ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  contactRequest: {fileID: 0}
+  contactActions: {fileID: 0}
+  prefabReference: {fileID: 0}
+  name: 
 --- !u!1 &4675646054375856173
 GameObject:
   m_ObjectHideFlags: 0

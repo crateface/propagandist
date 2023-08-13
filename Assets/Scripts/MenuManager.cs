@@ -96,15 +96,13 @@ public class MenuManager : MonoBehaviour
     {
         if (articleTitle.text == "")
         { return; }
-        ResourceManager.main.publish(articleTitle.text,reporters.value,factCheckers.value,adverts.value);
+        ResourceManager.main.publish(articleTitle.text, reporters.value, factCheckers.value, adverts.value, contactSelection.options[contactSelection.value].text);
         articleTitle.text = "";
-
     }
 
     public void updateStrikes(int strikes)
     {
         strikesText.text = "Strikes: " + strikes;
-
     }
     
     public void displayEvent(string currentEvent)
@@ -121,5 +119,19 @@ public class MenuManager : MonoBehaviour
     {
         TMP_Dropdown.OptionData newOption = new TMP_Dropdown.OptionData(contactName) ;
         contactSelection.options.Add(newOption);
+    }
+
+    public void removeFromContactDropdown(string contactName)
+    {
+
+        foreach (TMP_Dropdown.OptionData option in contactSelection.options) 
+        { 
+            if (option.text == contactName) 
+            {
+                contactSelection.options.Remove(option);
+                break;
+            }
+        }
+        contactSelection.value = 0;
     }
 }

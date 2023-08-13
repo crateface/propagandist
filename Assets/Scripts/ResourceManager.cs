@@ -17,6 +17,7 @@ public class ResourceManager : MonoBehaviour
     bool militaryAnalyst;
     bool politicalAnalyst;
     bool insurance;
+    string currentSource;
 
     public void Awake()
     {
@@ -64,24 +65,48 @@ public class ResourceManager : MonoBehaviour
         MenuManager.main.updateBars(revenue, outreach, stateSupport, credibility);
     }
 
-    public void publish(string text, float reporters, float factCheckers, float adverts)
+    public void publish(string text, float reporters, float factCheckers, float adverts, string source)
     {
-
-        if (text.Split(' ').Length < 5)
-        { calculateValues("Fake", 0, 0); }
-        else { serverScript.main.sendTitle(text); }
         currentAdverts = adverts;
         currentFactCheckers = factCheckers;
         currentReporters = reporters;
+        currentSource = source;
+        if (text.Split(' ').Length < 5)
+        { calculateValues("Fake", 0, 0); }
+        else { serverScript.main.sendTitle(text); }
     }
 
     public void calculateValues(string FakeorReal, float stateSentiment, float angerMeasure)
     {
+        string type;
         int credVal = 0;
         int reporter = (int)currentReporters*100;
         int factChecker = (int)currentFactCheckers * 100;
         int advert = (int)currentAdverts * 100;
         int temp = 0;
+        Debug.Log(currentSource);
+        if (ContactManager.main.findContact(currentSource) == null)
+        { type = "notype"; }
+        else
+        { type = ContactManager.main.findContact(currentSource).type; }
+        string eventAffilation = EventManager.main.currentEvent.affilation;
+        string eventType = EventManager.main.currentEvent.eventType;
+
+        Debug.Log(type + " " + eventAffilation + " " + eventType);
+
+        if (type == eventAffilation || type == eventType)
+        {
+            updateCredibility(5);
+        } 
+        else if ( type == "notype" ) 
+        {
+            Debug.Log("no type cited");
+        } 
+        else
+        {
+            updateCredibility(-15);
+        }
+
         if (FakeorReal == "Fake")
         {   
             credVal = -7;

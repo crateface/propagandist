@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7140f61365eca4797f867998475bff, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: 
-  eventContent: russian forces buildup spotted on border with ukraine
+  eventContent: Russian forces buildup spotted on border with Ukraine, Russia claims
+    them to be conducting routine drills
+  affilation: Russia
+  eventType: military

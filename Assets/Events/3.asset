@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7140f61365eca4797f867998475bff, type: 3}
   m_Name: 3
   m_EditorClassIdentifier: 
-  eventContent: it worked!!!
+  eventContent: President Zelenskyy denies possibility of invasion by Russia despite
+    US warnings
+  affilation: Ukraine
+  eventType: political

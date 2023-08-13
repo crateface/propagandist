@@ -6,6 +6,8 @@ using UnityEditor;
 public class Events : ScriptableObject
 {
     public string eventContent;
+    public string affilation; 
+    public string eventType;
     #if UNITY_EDITOR 
        [MenuItem("Assets/Create/news event")]
        public static void createEvent()

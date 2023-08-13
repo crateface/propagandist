@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7140f61365eca4797f867998475bff, type: 3}
   m_Name: 4
   m_EditorClassIdentifier: 
-  eventContent: putin declares a "special military operation in ukraine"
+  eventContent: Putin recognizes independence of Donetsk and Luhansk breakaway regions
+    in Eastern Ukraine
+  affilation: Russia
+  eventType: political

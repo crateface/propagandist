@@ -8,6 +8,8 @@ public class contact : MonoBehaviour
     public GameObject contactRequest;
     public GameObject contactActions;
     public GameObject prefabReference;
+    public string name;
+    public string type;
     void Start()
     {
         
@@ -23,10 +25,12 @@ public class contact : MonoBehaviour
     {
         contactRequest.SetActive(false);
         contactActions.SetActive(true);
+        MenuManager.main.addToContactDropdown(name);
     }
     public void decline()
-    {
-        ContactManager.main.removeContact(gameObject, prefabReference);
+    {        
+        MenuManager.main.removeFromContactDropdown(name);
+        ContactManager.main.removeContact(this, prefabReference);
 
     }
 

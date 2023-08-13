@@ -230,6 +230,8 @@ MonoBehaviour:
   contactRequest: {fileID: 6012439482729381885}
   contactActions: {fileID: 4745226303645588016}
   prefabReference: {fileID: 0}
+  name: Government of Ukraine
+  type: Ukraine
 --- !u!1 &4675646054375856173
 GameObject:
   m_ObjectHideFlags: 0

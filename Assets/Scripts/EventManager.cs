@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    public Events[] startingEvents;
-    public Events[] secondPhase;
     public List<Events> eventPool;
     public static EventManager main;
+    public phaseEvents [] phaseList;
+    public int currentPhase = 0;
+    public Events currentEvent;
     // Start is called before the first frame update
     public void Awake()
     {
@@ -16,7 +17,7 @@ public class EventManager : MonoBehaviour
     void Start()
     {
         eventPool = new List<Events>();
-        foreach (Events newEvent in startingEvents)
+        foreach (Events newEvent in phaseList[currentPhase].pool)
         {
             eventPool.Add(newEvent);
         }
@@ -31,16 +32,38 @@ public class EventManager : MonoBehaviour
     public void refreshEvent()
     {
         if (eventPool.Count == 0)
-        { proceedNextPhase(); return; }
+        {
+            if (currentPhase < phaseList.Length - 1)
+            {
+                currentPhase++;
+                proceed(); 
+                return; 
+            } else
+            {
+                MenuManager.main.gameOver("finished the demo");
+            }
+            
+        }
         int index = Random.Range(0, eventPool.Count);
-        Events currentEvent = eventPool[index];
+        currentEvent = eventPool[index];
         eventPool.RemoveAt(index);
         MenuManager.main.displayEvent(currentEvent.eventContent);
         MenuManager.main.updateEventCounter(eventPool.Count);
     }
 
-    public void proceedNextPhase()
+    public void proceed()
     {
-        MenuManager.main.gameOver("finished the demo");
+        foreach (Events newEvent in phaseList[currentPhase].pool)
+        {
+            eventPool.Add(newEvent);
+        }
+        refreshEvent();
     }
+}
+
+[System.Serializable]
+public class phaseEvents 
+{
+    public string name;
+    public Events[] pool;
 }
