@@ -84,45 +84,21 @@ public class ResourceManager : MonoBehaviour
         int factChecker = (int)currentFactCheckers * 100;
         int advert = (int)currentAdverts * 100;
         int temp = 0;
-        Debug.Log(currentSource);
         if (ContactManager.main.findContact(currentSource) == null)
         { type = "notype"; }
-        else
-        { type = ContactManager.main.findContact(currentSource).type; }
+        else { type = ContactManager.main.findContact(currentSource).type; }
         string eventAffilation = EventManager.main.currentEvent.affilation;
         string eventType = EventManager.main.currentEvent.eventType;
-
-        Debug.Log(type + " " + eventAffilation + " " + eventType);
-
-        if (type == eventAffilation || type == eventType)
-        {
-            updateCredibility(5);
-        } 
-        else if ( type == "notype" ) 
-        {
-            Debug.Log("no type cited");
-        } 
-        else
-        {
-            updateCredibility(-15);
-        }
-
+        if (type == eventAffilation || type == eventType) { updateCredibility(5); } 
+        else if ( type == "notype" ) { } 
+        else { updateCredibility(-15); }
         if (FakeorReal == "Fake")
-        {   
-            credVal = -7;
-            temp = Random.Range(credVal, 0);
-        }
-        else 
-        {
-            credVal = 7;
-            temp = Random.Range(0, credVal);
-        }
+        {  credVal = -7; temp = Random.Range(credVal, 0); }
+        else { credVal = 7; temp = Random.Range(0, credVal); }
         updateOutreach(reporter/9 + (int)angerMeasure*5 - temp);
         updateRevenue(outreach/10 - reporter/9 - factChecker/9 + advert/4);
-        updateStateSupport((int)(stateSentiment * 50));
-        updateCredibility(credVal + factChecker/6 - advert/6 + Random.Range(-3,2));
-        articlesPublished += 1;
-        //if (revenue + outreach + stateSupport == 0 & youMessedUp == 0) { firebaseManager.main.updateAchievement("sudden collapse");
+        updateStateSupport((int)(stateSentiment * 10));
+        updateCredibility(credVal + factChecker/6 - advert/6 + Random.Range(-3,1));
         if (revenue == 0) { youMessedUp += 1; }
         if (outreach == 0) { youMessedUp += 1; }
         if (stateSupport == 0) { youMessedUp += 1; }
@@ -152,5 +128,10 @@ public class ResourceManager : MonoBehaviour
         {
             militaryAnalyst = true;
         }
+    }
+
+    public int getOutreach()
+    {
+        return outreach;
     }
 }

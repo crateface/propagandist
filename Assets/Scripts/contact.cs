@@ -44,18 +44,21 @@ public class contact : MonoBehaviour
     public void promote()
     {
         ResourceManager.main.updateOutreach(15);
+        decline();
     }
 
     public void insure()
     {
         ResourceManager.main.hired("you");
         ResourceManager.main.updateRevenue(-10);
+        decline();
     }
 
     public void hireanalyst(string which)
     {
         ResourceManager.main.hired(which);
         ResourceManager.main.updateRevenue(-15);
+        decline();
     }
     
     public void predict()
@@ -63,5 +66,6 @@ public class contact : MonoBehaviour
         ResourceManager.main.updateRevenue(-5);
         ResourceManager.main.updateCredibility(-10);
         ResourceManager.main.updateOutreach(15);
+        decline();
     }
 }

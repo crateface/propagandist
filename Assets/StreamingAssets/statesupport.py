@@ -24,8 +24,8 @@ def mostCommon(text):
   return frequency.most_common(2)[0][0]
 
 def getStateSupport(context):
-  allies = ["us","united states","nato","eu","ukraine","poland"]
-  enemies = ["russia", "china","csto","slovakia"]
+  allies = ["ukraine","ua","us","united states","nato","eu","poland","zelensky","zelenskyy","united kingdom","uk","france","germany"]
+  enemies = ["russia","china","csto","slovakia","north korea","iran","putin"]
   value = 1
   polarity = getPolarity(context)
   most_common_country = mostCommon(context)

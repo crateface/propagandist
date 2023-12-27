@@ -32,7 +32,7 @@ public class ContactManager : MonoBehaviour
             return;
         }
         int chance = Random.Range(1, 100);
-        if (chance>0) 
+        if (chance<ResourceManager.main.getOutreach()) 
         {
             int index = Random.Range(0, contactPrefabs.Count - 1);
             GameObject selected = contactPrefabs[index];

@@ -7418,6 +7418,7 @@ MonoBehaviour:
     pool:
     - {fileID: 11400000, guid: 3ed093f668ae0584b92a7af6cd4632d2, type: 2}
   currentPhase: 0
+  currentEvent: {fileID: 0}
 --- !u!114 &1509733701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11148,6 +11149,8 @@ MonoBehaviour:
   contactRequest: {fileID: 0}
   contactActions: {fileID: 0}
   prefabReference: {fileID: 0}
+  name: 
+  type: 
 --- !u!114 &5813500950970382291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11163,6 +11166,8 @@ MonoBehaviour:
   contactRequest: {fileID: 0}
   contactActions: {fileID: 0}
   prefabReference: {fileID: 0}
+  name: 
+  type: 
 --- !u!114 &5813500951394839866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11178,6 +11183,8 @@ MonoBehaviour:
   contactRequest: {fileID: 0}
   contactActions: {fileID: 0}
   prefabReference: {fileID: 0}
+  name: 
+  type: 
 --- !u!114 &7956833540696711300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11193,3 +11200,5 @@ MonoBehaviour:
   contactRequest: {fileID: 0}
   contactActions: {fileID: 0}
   prefabReference: {fileID: 0}
+  name: 
+  type: 
