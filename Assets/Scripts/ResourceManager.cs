@@ -72,11 +72,13 @@ public class ResourceManager : MonoBehaviour
         currentReporters = reporters;
         currentSource = source;
         if (text.Split(' ').Length < 5)
-        { calculateValues("Fake", 0, 0); }
-        else { serverScript.main.sendTitle(text); }
+            calculateValues(0, 0, 0);
+        else 
+            GptManager.main.SubmitChat(text);
+        // serverScript.main.sendTitle(text);
     }
 
-    public void calculateValues(string FakeorReal, float stateSentiment, float angerMeasure)
+    public void calculateValues(float cred, float support, float polarity)
     {
         string type;
         int credVal = 0;
@@ -84,26 +86,41 @@ public class ResourceManager : MonoBehaviour
         int factChecker = (int)currentFactCheckers * 100;
         int advert = (int)currentAdverts * 100;
         int temp = 0;
+        
         if (ContactManager.main.findContact(currentSource) == null)
-        { type = "notype"; }
-        else { type = ContactManager.main.findContact(currentSource).type; }
+            type = "notype"; 
+        else 
+            type = ContactManager.main.findContact(currentSource).type; 
+
         string eventAffilation = EventManager.main.currentEvent.affilation;
         string eventType = EventManager.main.currentEvent.eventType;
-        if (type == eventAffilation || type == eventType) { updateCredibility(5); } 
-        else if ( type == "notype" ) { } 
+
+        if ((type == eventAffilation || type == eventType) && type != "notype") 
+            updateCredibility(5); 
         else { updateCredibility(-15); }
-        if (FakeorReal == "Fake")
-        {  credVal = -7; temp = Random.Range(credVal, 0); }
-        else { credVal = 7; temp = Random.Range(0, credVal); }
-        updateOutreach(reporter/9 + (int)angerMeasure*5 - temp);
+
+        if (cred == 0)
+        {  
+            credVal = -7; 
+            temp = Random.Range(credVal, 0); 
+        }
+        else 
+        { 
+            credVal = 7; 
+            temp = Random.Range(0, credVal); 
+        }
+
+        updateOutreach(reporter/9 + (int)polarity*5 - temp);
         updateRevenue(outreach/10 - reporter/9 - factChecker/9 + advert/4);
-        updateStateSupport((int)(stateSentiment * 10));
+        updateStateSupport((int)(support * 10));
         updateCredibility(credVal + factChecker/6 - advert/6 + Random.Range(-3,1));
+
         if (revenue == 0) { youMessedUp += 1; }
         if (outreach == 0) { youMessedUp += 1; }
         if (stateSupport == 0) { youMessedUp += 1; }
         if (revenue * outreach * stateSupport != 0) { youMessedUp = 0; }
         if (youMessedUp >= 3) { gameOver("Ran out of resources"); }
+
         MenuManager.main.updateStrikes(youMessedUp);
         EventManager.main.refreshEvent();
         ContactManager.main.generateContact();
